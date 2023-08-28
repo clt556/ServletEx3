@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 화면</title>
+<script type="text/javascript">
+	const func_validate = () =>{
+		var form = document.forms['frmLogin'];
+		var user_id = form.elements['user_id'].value;
+		var user_pwd = form.elements['user_pw'].value;
+		
+		if(user_id.length === 0 && user_pwd.length !== 0){
+			form.elements['user_id'].focus();
+		}else if(user_id.length !== 0 && user_pwd.length === 0){
+			form.elements['user_pw'].focus();
+		}else if(user_id.length === 0 && user_pwd.length === 0){
+			form.elements['user_id'].focus();
+		}else{
+			form.submit();
+		}
+	}
+</script>
+</head>
+<body>
+	<form name="frmLogin" action="Login" method="post" enctype="UTF-8">
+		ID: <input type="text" name="user_id"/><br/>
+		PASSWORD: <input type="password" name="user_pw"/><br/>
+		<input type="button" onclick="func_validate()" value="로그인"/>
+		<input type="reset" value="입력 정보 초기화"/>
+		<input type="hidden" name="user_address" value="경기도 오산시"/>
+	</form>
+</body>
+</html>
